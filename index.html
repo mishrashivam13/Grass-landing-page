@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Lawnella – Premium Landscaping Theme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #a7f3d0;
+            --secondary: #f59e0b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* ================= NAVBAR ================= */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            /* padding: 1.5rem 0; */
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.75rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .navbar-brand span {
+            font-size: 0.875rem;
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--gray);
+            margin: 0 0.75rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.6)),
+                url("pexels-pixmike-413195.jpg") center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 80px;
+            overflow: hidden;
+
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.3);
+            color: white;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+        }
+
+        .hero-feature i {
+            color: var(--primary-light);
+        }
+
+        /* ================= TURF SECTION ================= */
+        .turf-section {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .turf-filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .turf-filter {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: white;
+            color: var(--gray);
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .turf-filter:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            color: var(--primary);
+        }
+
+        .turf-filter.active {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .turf-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            position: relative;
+        }
+
+        .turf-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .turf-card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .turf-card-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .turf-card:hover .turf-card-img {
+            transform: scale(1.05);
+        }
+
+        .turf-card-body {
+            padding: 1.5rem;
+        }
+
+        .turf-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .turf-card-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .turf-card-stars {
+            color: var(--secondary);
+        }
+
+        .turf-card-rating span {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        .turf-card-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .turf-card-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        .turf-card-features i {
+            color: var(--primary);
+            font-size: 0.75rem;
+        }
+
+        .turf-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .turf-card-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .turf-card-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .turf-card-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            color: white;
+        }
+
+
+        /* New Project Card Animation */
+        .new-project {
+            opacity: 0;
+            transform: scale(0.9) translateY(50px);
+        }
+
+        /* Section Header */
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .section-label {
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-card {
+                height: 300px;
+            }
+
+            .project-info h4 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* ================= WHY XOTO ================= */
+        .why-xoto {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .why-xoto-content {
+            padding-right: 3rem;
+        }
+
+        .why-xoto h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .why-xoto p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .why-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .why-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .why-list li:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .why-list i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .why-xoto-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .why-xoto-image img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .why-xoto-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        /* ================= QUOTE SECTION ================= */
+        .quote-section {
+            padding: 6rem 0;
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .quote-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-content p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            font-size: 1.25rem;
+        }
+
+        .contact-text h4 {
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-text p {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+            font-size: 0.875rem;
+        }
+
+        .quote-form-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quote-form-container h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+            color: white;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+
+        }
+
+        select.form-control option {
+            background-color: #0f172a;
+            /* dark solid */
+            color: #ffffff;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        /* ================= ANIMATIONS ================= */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .nav-cta {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+
+            }
+
+            .section-title,
+            .why-xoto h2,
+            .quote-content h2 {
+                font-size: 2rem;
+            }
+
+            .why-xoto-content {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+        }
+
+        /* ================= CUSTOM SCROLLBAR ================= */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        footer img {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        footer img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+        }
+
+        /* ================= FLOATING ACTION BUTTONS ================= */
+.floating-actions {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 9999;
+}
+
+.fab-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+}
+
+.fab-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    color: #fff;
+}
+
+/* WhatsApp */
+.fab-btn.whatsapp {
+    background: #25D366;
+    animation: pulseWhatsApp 2s infinite;
+}
+
+/* Call */
+.fab-btn.call {
+    background: var(--primary);
+}
+
+/* Pulse Animation */
+@keyframes pulseWhatsApp {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* Mobile tweak */
+@media (max-width: 768px) {
+    .floating-actions {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .fab-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen"
+        style="position: fixed; inset: 0; background: var(--light); display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.3s;">
+        <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary);" class="animate-float">🌿</div>
+            <div style="font-weight: 600; color: var(--dark);">Loading XOTO...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <!-- Left: Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="logo1.png" alt="XOTO Logo" style="height: 65px; width: 110px;" />
+            </a>
+
+            <!-- Right: CTA -->
+            <!-- <a href="#" class="nav-cta ms-3">
+                Get started
+            </a> -->
+
+        </div>
+    </nav>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1 class="animate-fade-in delay-2 " id="h1" style="margin-top: 20px;">
+                    Transform Your Lawn with Premium Artificial Grass<br>
+                    <span style="color: var(--primary-light); font-size: 1.5rem;">Always Green | Low Maintenance |
+                        Perfect Year-Round</span>
+                </h1>
+
+                <p class="hero-subtitle animate-fade-in delay-2">
+                    Upgrade your spaces with premium artificial grass designed to look natural, withstand all weather
+                    conditions, and stay beautifully green throughout the year.
+                </p>
+
+                <!-- <a href="#" class="hero-cta animate-fade-in delay-3">
+                    Get Started Today
+                    <i class="fas fa-arrow-right"></i>
+                </a> -->
+
+                <div class="hero-features animate-fade-in delay-3">
+                    <div class="hero-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span> Natural Look & Feel</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Durable & Weather-Resistant</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span> Professional Installation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Turf Section -->
+    <section class="turf-section" id="turf">
+        <div class="container">
+            <div class="section-header animate-fade-in">
+                <span class="section-label">Our Services</span>
+                <h2 class="section-title">Premium Artificial Grass Solutions</h2>
+                <p class="section-subtitle">
+                    Choose from our wide range of high-quality artificial turf solutions designed for every need
+                </p>
+            </div>
+
+
+
+            <div class="row g-4" id="turf-grid">
+                <!-- Villas & Private Gardens -->
+                <div class="col-lg-4 col-md-6" data-category="residential premium">
+                    <div class="turf-card animate-fade-in delay-2">
+
+                        <img src="Path way.jpg" class="turf-card-img" alt="Residential Premium Turf">
+                        <div class="turf-card-body">
+                            <h3 class="turf-card-title">Villas & Private Gardens</h3>
+                            <div class="turf-card-rating">
+
+
+                            </div>
+                            <ul class="turf-card-features">
+                                <li><i class="fas fa-check"></i> Natural look & feel</li>
+                                <li><i class="fas fa-check"></i> Low maintenance landscaping</li>
+                                <li><i class="fas fa-check"></i> Year-round greenery</li>
+                            </ul>
+                            <!-- <div class="turf-card-footer">
+
+                                <a href="#" class="turf-card-cta">Get Quote</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Balconies & Terraces -->
+                <div class="col-lg-4 col-md-6" data-category="commercial">
+                    <div class="turf-card animate-fade-in delay-2">
+
+                        <img src="balcony.jpg" class="turf-card-img" alt="Commercial Turf">
+                        <div class="turf-card-body">
+                            <h3 class="turf-card-title">Balconies & Terraces</h3>
+                            <div class="turf-card-rating">
+
+
+                            </div>
+                            <ul class="turf-card-features">
+                                <li><i class="fas fa-check"></i> Lightweight & easy to install</li>
+                                <li><i class="fas fa-check"></i> No watering or soil required</li>
+                                <li><i class="fas fa-check"></i> Ideal for compact spaces</li>
+                            </ul>
+                            <!-- <div class="turf-card-footer">
+
+                                <a href="#" class="turf-card-cta">Get Quote</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rooftops & Sky Gardens -->
+                <div class="col-lg-4 col-md-6" data-category="sports">
+                    <div class="turf-card animate-fade-in delay-2">
+
+                        <img src="sky.jpg" class="turf-card-img" alt="Sports Turf">
+                        <div class="turf-card-body">
+                            <h3 class="turf-card-title">Rooftops & Sky Gardens</h3>
+                            <div class="turf-card-rating">
+
+
+                            </div>
+                            <ul class="turf-card-features">
+                                <li><i class="fas fa-check"></i> Heat & weather resistant</li>
+                                <li><i class="fas fa-check"></i> Enhances unused spaces</li>
+                                <li><i class="fas fa-check"></i> Minimal maintenance</li>
+                            </ul>
+                            <!-- <div class="turf-card-footer">
+
+                                <a href="#" class="turf-card-cta">Get Quote</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-category="sports">
+                    <div class="turf-card animate-fade-in delay-2">
+
+                        <img src="path.jpg" class="turf-card-img" alt="Sports Turf">
+                        <div class="turf-card-body">
+                            <h3 class="turf-card-title">Walkways & Pathways</h3>
+                            <div class="turf-card-rating">
+
+
+                            </div>
+                            <ul class="turf-card-features">
+                                <li><i class="fas fa-check"></i> Durable & Strong</li>
+                                <li><i class="fas fa-check"></i> Always Neat</li>
+                                <li><i class="fas fa-check"></i> Long-Lasting</li>
+                            </ul>
+                            <!-- <div class="turf-card-footer">
+
+                                <a href="#" class="turf-card-cta">Get Quote</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-category="sports">
+                    <div class="turf-card animate-fade-in delay-2">
+
+                        <img src="Ground.jpg" class="turf-card-img" alt="Sports Turf">
+                        <div class="turf-card-body">
+                            <h3 class="turf-card-title">Sports Courts & Fields</h3>
+                            <div class="turf-card-rating">
+
+
+                            </div>
+                            <ul class="turf-card-features">
+                                <li><i class="fas fa-check"></i> All-Weather Play</li>
+                                <li><i class="fas fa-check"></i> Low Maintenance</li>
+                                <li><i class="fas fa-check"></i> Consistent Performance</li>
+                            </ul>
+                            <!-- <div class="turf-card-footer">
+
+                                <a href="#" class="turf-card-cta">Get Quote</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-category="sports">
+                    <div class="turf-card animate-fade-in delay-2">
+
+                        <img src="pool.jpg" class="turf-card-img" alt="Sports Turf">
+                        <div class="turf-card-body">
+                            <h3 class="turf-card-title">Poolside & Outdoor Lounges</h3>
+                            <div class="turf-card-rating">
+
+
+                            </div>
+                            <ul class="turf-card-features">
+                                <li><i class="fas fa-check"></i> Water-friendly surface</li>
+                                <li><i class="fas fa-check"></i> Slip resistant</li>
+                                <li><i class="fas fa-check"></i> Stylish outdoor finish</li>
+                            </ul>
+                            <!-- <div class="turf-card-footer">
+
+                                <a href="#" class="turf-card-cta">Get Quote</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+    <!-- Why XOTO Section -->
+    <section class="why-xoto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="why-xoto-content animate-fade-in">
+                        <span class="section-label">Why Choose Us</span>
+                        <h2>Premium Solutions Built for Excellence</h2>
+                        <p>
+                            XOTO provides artificial grass solutions designed to be durable, visually appealing, and
+                            sustainable, using modern techniques and technology.
+                        </p>
+                        <ul class="why-list">
+                            <li class="animate-fade-in delay-1">
+                                <i class="fas fa-award"></i>
+                                <div>
+                                    <strong>Designed for Modern Spaces</strong>
+                                    <p style="margin: 0; font-size: 0.875rem; color: var(--gray);">Thoughtfully created
+                                        grass solutions for modern spaces.</p>
+                                </div>
+                            </li>
+                            <li class="animate-fade-in delay-2">
+                                <i class="fas fa-sun"></i>
+                                <div>
+                                    <strong>Clean & Natural Look</strong>
+                                    <p style="margin: 0; font-size: 0.875rem; color: var(--gray);">Turf that enhances
+                                        the visual appeal of any area.</p>
+                                </div>
+                            </li>
+                            <li class="animate-fade-in delay-3">
+                                <i class="fas fa-leaf"></i>
+                                <div>
+                                    <strong>Built to Last Responsibly</strong>
+                                    <p style="margin: 0; font-size: 0.875rem; color: var(--gray);">Long-lasting turf
+                                        with a focus on sustainability.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="why-xoto-image animate-fade-in delay-2">
+
+                        <img src="why.png" alt="XOTO Installation">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section" id="quote">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="quote-content animate-fade-in">
+                        <h2>Get Your Perfect Artificial Lawn</h2>
+                        <p>
+                            Book a free site inspection and receive a personalized quote for premium artificial grass
+                            installation.
+                            Our experts assess your space and recommend the best solution for durability, comfort, and
+                            long-lasting appeal.
+                        </p>
+                        <div class="contact-info">
+                            <div class="contact-item animate-fade-in delay-1">
+                                <i class="fas fa-phone-alt"></i>
+                                <div class="contact-text">
+                                    <h4>Call Us Anytime</h4>
+                                    <p>+971 50 262 1040</p>
+                                    <p>+971 56 442 1447</p>
+                                </div>
+                            </div>
+                            <div class="contact-item animate-fade-in delay-2">
+                                <i class="far fa-envelope"></i>
+                                <div class="contact-text">
+                                    <h4>Email Us</h4>
+                                    <p>sales.support@xoto.ae</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="quote-form-container animate-fade-in delay-2">
+                        <h3>Get Free Quote</h3>
+                        <form id="contact-form">
+                            <input type="text" class="form-control" placeholder="Your Name *" required>
+                            <input type="tel" class="form-control" placeholder="Phone Number *" required>
+                            <input type="email" class="form-control" placeholder="Email Address *" required>
+                            <select class="form-control" required>
+                                <option value="">Property Type *</option>
+                                <option> Villa</option>
+                                <option>Apartment </option>
+                                <option>School</option>
+                                <option>Sports Facility</option>
+                                <option>Other</option>
+                            </select>
+                            <input type="text" class="form-control" placeholder="Approximate Area (sq.ft)">
+                            <textarea class="form-control" rows="4"
+                                placeholder="Tell us about your project..."></textarea>
+                            <button type="submit" class="btn-submit">Get Free Quote</button>
+                            <p
+                                style="text-align: center; color: rgba(255,255,255,0.6); font-size: 0.875rem; margin-top: 1rem;">
+                                We'll contact you within 2 hours during business hours
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Floating Contact Buttons -->
+<div class="floating-actions">
+    <!-- WhatsApp -->
+    <a 
+        href="https://wa.me/971502621040" 
+        target="_blank" 
+        class="fab-btn whatsapp" 
+        aria-label="Chat on WhatsApp"
+    >
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Call -->
+    <a 
+        href="tel:+971502621040" 
+        class="fab-btn call" 
+        aria-label="Call Now"
+    >
+        <i class="fas fa-phone-alt"></i>
+    </a>
+</div>
+
+
+    <!-- Footer -->
+    <footer style="background: var(--dark); color: white; padding: 3rem 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="logo.png" alt="XOTO Logo" style="height: 68px; width: auto;" />
+
+                    </div>
+
+                    <p style="opacity: 0.7; max-width: 400px;">
+                        Transform your landscaping business with XOTO.
+
+                    </p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <div style="margin-bottom: 1rem;">
+                        <a href="#"
+                            style="color: white; margin-left: 1.5rem; text-decoration: none; opacity: 0.7; transition: opacity 0.3s;"
+                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            style="color: white; margin-left: 1.5rem; text-decoration: none; opacity: 0.7; transition: opacity 0.3s;"
+                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/xotohome/"
+                            style="color: white; margin-left: 1.5rem; text-decoration: none; opacity: 0.7; transition: opacity 0.3s;"
+                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            style="color: white; margin-left: 1.5rem; text-decoration: none; opacity: 0.7; transition: opacity 0.3s;"
+                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <p style="opacity: 0.7; margin: 0;">© 2025 XOTO. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Loading screen
+        window.addEventListener('load', () => {
+            const loadingScreen = document.querySelector('.loading-screen');
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 300);
+        });
+
+
+
+        // Turf filtering
+        document.querySelectorAll('.turf-filter').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.turf-filter').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('#turf-grid > div').forEach(item => {
+                    const categories = item.dataset.category.split(' ');
+                    if (filter === 'all' || categories.includes(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+
+
+
+        // Load More for Projects (demo - adds 3 placeholder cards)
+        gsap.utils.toArray('.project-card').forEach((card, i) => {
+            gsap.from(card, {
+                y: 100,
+                opacity: 0,
+                scale: 0.9,
+                duration: 1.2,
+                ease: "power3.out",
+                delay: i * 0.15,
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+
+        // Load More Projects - with beautiful staggered animation
+        document.getElementById('load-more-projects').addEventListener('click', () => {
+            const grid = document.getElementById('projects-grid');
+
+            for (let i = 0; i < 3; i++) {
+                const col = document.createElement('div');
+                col.className = 'col-lg-4 col-md-6 new-project';
+                col.innerHTML = `
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/600x500/10b981/ffffff?text=Project+${grid.children.length + i + 1}" alt="New Project" class="project-img">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h4>New Project ${grid.children.length + i + 1}</h4>
+                                <span>Dubai · Residential</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(col);
+
+                // Animate new card
+                gsap.to(col, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: "power3.out",
+                    delay: i * 0.2
+                });
+            }
+        });
+        // Form submission (simulated)
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+                submitBtn.style.background = 'var(--primary-dark)';
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '';
+                }, 2000);
+            }, 1500);
+        });
+
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
