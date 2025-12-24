@@ -1008,9 +1008,9 @@
             </a>
 
             <!-- Right: CTA -->
-            <!-- <a href="#" class="nav-cta ms-3">
-                Get started
-            </a> -->
+            <a href="https://xoto.ae/" class="nav-cta ms-3">
+                Contact Us
+            </a>
 
         </div>
     </nav>
@@ -1047,15 +1047,9 @@
 <input type="tel" name="phone_number" class="form-control" placeholder="Phone Number *" required>
 
 <input type="email" name="email" class="form-control" placeholder="Email Address *" required>
+<input type="text" name="property_type" class="form-control" placeholder="Property Type *" required>
 
-<select name="property_type" class="form-control" required>
-  <option value="">Property Type *</option>
-  <option>Villa</option>
-  <option>Apartment</option>
-  <option>School</option>
-  <option>Sports Facility</option>
-  <option>Other</option>
-</select>
+
 
 <input type="text" name="area" class="form-control" placeholder="Area / Location">
 
@@ -1286,38 +1280,82 @@
     <!-- Quote Section -->
     <section class="quote-section" id="quote">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="quote-content animate-fade-in">
-                        <h2>Get Your Perfect Lawn Solution</h2>
-                        <p>
-                            Book a free site inspection and receive a personalized quote for premium artificial or natural grass
-                            installation.
-                            Our experts assess your space and recommend the best solution for durability, comfort, and
-                            long-lasting appeal.
-                        </p>
-                        <div class="contact-info">
-                            <div class="contact-item animate-fade-in delay-1">
-                                <i class="fas fa-phone-alt"></i>
-                                <div class="contact-text">
-                                    <h4>Call Us Anytime</h4>
-                                    <p>+971 50 262 1040</p>
-                                    <p>+971 56 442 1447</p>
-                                </div>
-                            </div>
-                            <div class="contact-item animate-fade-in delay-2">
-                                <i class="far fa-envelope"></i>
-                                <div class="contact-text">
-                                    <h4>Email Us</h4>
-                                    <p>sales.support@xoto.ae</p>
-                                </div>
-                            </div>
+           <div class="row align-items-center">
+  
+  <!-- LEFT: CONTENT (unchanged) -->
+  <div class="col-lg-6 mb-5 mb-lg-0">
+    <div class="quote-content animate-fade-in">
+      <h2>Get Your Perfect Lawn Solution</h2>
+      <p>
+        Book a free site inspection and receive a personalized quote for premium artificial or natural grass
+        installation. Our experts assess your space and recommend the best solution for durability, performance,
+        and long-lasting appeal.
+      </p>
 
-                        </div>
-                    </div>
-                </div>
-                <!--  -->
-            </div>
+      <div class="contact-info">
+        <div class="contact-item animate-fade-in delay-1">
+          <i class="fas fa-phone-alt"></i>
+          <div class="contact-text">
+            <h4>Call Us Anytime</h4>
+            <p>+971 50 262 1040</p>
+            <p>+971 56 442 1447</p>
+          </div>
+        </div>
+
+        <div class="contact-item animate-fade-in delay-2">
+          <i class="far fa-envelope"></i>
+          <div class="contact-text">
+            <h4>Email Us</h4>
+            <p>sales.support@xoto.ae</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: NEWSLETTER -->
+  <div class="col-lg-6">
+    <div class="quote-form-container animate-fade-in delay-2">
+      <h3>Subscribe to XOTO Updates</h3>
+
+      <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 1.5rem;">
+        Get expert advice on artificial and natural grass installation, lawn care guidance, and exclusive offers—delivered straight to your inbox.
+      </p>
+
+      <form id="newsletter-form">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Enter your email address"
+          required
+        />
+
+        <button type="submit" class="btn-submit">
+          Subscribe Now
+        </button>
+      </form>
+
+      <!-- BENEFITS -->
+      <div style="margin-top: 1.5rem; display: grid; gap: 0.75rem;">
+        <div style="display: flex; gap: 0.6rem; align-items: center; color: rgba(255,255,255,0.8); font-size: 0.85rem;">
+          <i class="fas fa-leaf" style="color: var(--primary-light);"></i>
+           Expert artificial & natural grass installation
+        </div>
+        <div style="display: flex; gap: 0.6rem; align-items: center; color: rgba(255,255,255,0.8); font-size: 0.85rem;">
+          <i class="fas fa-tags" style="color: var(--primary-light);"></i>
+           Professional site inspection & lawn preparation
+        </div>
+        <div style="display: flex; gap: 0.6rem; align-items: center; color: rgba(255,255,255,0.8); font-size: 0.85rem;">
+          <i class="fas fa-lightbulb" style="color: var(--primary-light);"></i>
+          Long-lasting, low-maintenance lawn solutions
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
         </div>
     </section>
 
@@ -1496,6 +1534,12 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.animate-fade-in').forEach(el => observer.observe(el));
+
+document.getElementById("newsletter-form")?.addEventListener("submit", function (e) {
+  e.preventDefault();
+  alert("✅ Thanks for subscribing to XOTO updates!");
+  this.reset();
+});
 </script>
 
 </body>
